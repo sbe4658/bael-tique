@@ -1,6 +1,6 @@
 #include "bael-tique.h"
 
-/* Needed constants*/
+/* Needed */
 int Q = 0, G = 0, Nu = 0, fc = 0, fe = 0;
 double gamab = 1.5, gamas = 1.15, lambda = 0, alpha = 0, Br = 0, d = 0; /* A l'etats normaux */
 __attribute__((unsused)) int a = 0, b = 0;
