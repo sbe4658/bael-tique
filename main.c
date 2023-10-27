@@ -2,8 +2,8 @@
 
 /* Needed */
 int Q = 0, G = 0, Nu = 0, fc = 0, fe = 0;
-double gamab = 1.5, gamas = 1.15, lambda = 0, alpha = 0, Br = 0, d = 0; /* A l'etats normaux */
-__attribute__((unsused)) int a = 0, b = 0;
+double gamab = 1.5, gamas = 1.15, lambda = 0, alpha = 0, Br = 0, d = 0, a = 0, b = 0; /* A l'etats normaux */
+__attribute__((unsused)) int j = 90;
 /**
  * main - a simple program to compute "le diamétre des armature d'acier"
  * 
@@ -27,15 +27,16 @@ int main(void)
         scanf("", n);
         if (n == 2)
         {
-            scanf("La valeur de la largeur a (en m): ", a);
-            scanf("La valeur de la langeur b (en m): ", b);
+            scanf("La valeur de a (en m): ", a);
+            scanf("La valeur de b (en m): ", b);
         }
         else if (n == 1)
             scanf("La valeur de d le diamiètre (en m): ", d);
         else
         {
             dprintf(2, "Entrez une valeur entre 1 et 2 (Cerculaire et regtangulaire)\n");
-            n == 0;
+            n = 0;
+            cls();
         }
         i++;
     }
@@ -76,6 +77,7 @@ int determ_de_lf(double L0, secpoteau_t *p)
         {
             dprintf(2, "%c ou %c est inconnu\n", c, t);
             c = '0';
+            cls();
         }
     }
     return (0);
