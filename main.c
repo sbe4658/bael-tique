@@ -27,8 +27,8 @@ int main(void)
         scanf("", n);
         if (n == 2)
         {
-            scanf("La valeur de a (en m): ", a);
-            scanf("La valeur de b (en m): ", b);
+            scanf("La valeur de la largeur a (en m): ", a);
+            scanf("La valeur de la langeur b (en m): ", b);
         }
         else if (n == 1)
             scanf("La valeur de d le diamiètre (en m): ", d);
