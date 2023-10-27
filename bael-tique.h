@@ -2,6 +2,10 @@
 #define BAEL
 
 /* Macros and constants */
+#define min(a, b) \
+   ({ __typeof__ (a) _a = (a); \
+       __typeof__ (b) _b = (b); \
+     _a < _b ? _a : _b; })
 #define max(a, b) \
    ({ __typeof__ (a) _a = (a); \
        __typeof__ (b) _b = (b); \
@@ -24,14 +28,18 @@ extern __attribute__((unsused)) j;
 /**
  * struct poteau_s - informations sur le poteaux.
  * @lf: longeur fe flambement.
- * @section_poteau: (function pointer) section de poteau les dimensionement.
+ * @lambda: (function pointer) section de poteau les dimensionement.
 */
 typedef struct poteau_s
 {
     double lf;
-    char *(*section_poteau)(int a, ...);
+    int j;
     double lambda;
     double alpha;
+    double dlmin;
+    double dlmax; /* diamétre d'arm longitidinales max*/
+    double dt; /* diamétre d'arm transversales */
+    double t; /* espacement */
 } secpoteau_t;
 
 /**
@@ -47,7 +55,10 @@ typedef struct history_t
 } history;
 
 /* Functions */
-secpoteau_t *p_cercl(void);
-secpoteau_t *p_rect(char);
+double calc_alpha(void);
+double calc_section(char c);
+double calc_Br(char c);
+secpoteau_t *p_cercl(secpoteau_t *p);
+secpoteau_t *p_rect(secpoteau_t *p);
 
 #endif
