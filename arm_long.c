@@ -1,38 +1,37 @@
 #include "bael-tique.h"
 void arm_long(secpoteau_t *p)
 {
-    int n = 0, i = 0;
-    char chek = '0';
+    int n = 0;
+    char chek[1024];
 
     while (1)
     {
         clr_buff();
         printf("Avez-vous la valeur de Nu? (oui/non)\n");
-        scanf(" %c", &chek);
-        if (chek == 'o')
+        fgets(chek, 1024, stdin);
+        if (strncmp(chek, "non", 3))
         {
-            scanf("donnez la valeur de Nu (en MN): %lf", &Nu);
+            lfscanf("donnez la valeur de Nu (en MN): ", &Nu);
         }
-        else if (chek == 'n')
+	else if (strncmp(chek, "oui", 3))
         {
-            scanf("Donnez la valeur de G: %lf Q: %lf (en MN)", &G, &Q);
+            lfscanf("Donnez la valeur de G (en MN): ", &Q);
+            lfscanf("Donnez la valeur de Q (en MN): ", &Q);
             Nu = (1.35 * G) + (1.5 * Q);
         }
         else
-            dprintf(2, "repondez par o (oui) ou n (non)\n");
+            dprintf(2, "repondez par (oui) ou (non)\n");
 
-        printf("%c\n", chek);
         printf("Veulliez-vous changer la valeur de \u03b3b et \u03b3s? (oui/non)\n");
-        scanf(" %c", &chek);
-
-        printf("%c", chek);
-        if (chek == 'o')
+        fgets(chek, 1024, stdin);
+        if (strncmp(chek, "non", 3))
         {
-            scanf("donnez la valeur de \u03b3b: %lf et \u03b3s: %lf", &gamab, &gamas);
+            lfscanf("donnez la valeur de \u03b3b: ", &gamab);
+            lfscanf("donnez la valeur de \u03b3s: ", &gamas);
         }
 
         printf("La mjeures ou la plus de la moitié des charges est appliquée:\n1. après 90 jours\n2. avant 90 jours\n3. à un âge avant 28 jours\n");
-        scanf("%d", &n);
+        dscanf("", &n);
 
         if (n == 1)
             j = 90;
@@ -40,40 +39,28 @@ void arm_long(secpoteau_t *p)
             j = 89;
         else if (n == 3)
         {
-            scanf("Combien de jours: %d", &j);
+            dscanf("Combien de jours: ", &j);
         }
 
         printf("fc%d: ", (j >= 28 ? 28 : j));
-        scanf("%lf", &fc);
+        lfscanf("", &fc);
 
         printf("f\u2091 (en MPa): ");
-        scanf("%d", &fe);
+        dscanf("", &fe);
 
-        printf("What's wrong dawng: %lf\n", p->lf);
-
-        if (p->lf)
-        {
-            scanf("Utilisez la valeur de lf calculée déjà? o/n: %c", &chek);
-
-            if (chek == 'o')
-                scanf("donnez la valeur de lf (en m): %lf", &(p->lf));
-        }
-
-        if (n == 0 && i >= 0)
-            printf("choisissez la section de poteau:\n1. Cerculaire\n2. Rectangulaire\n");
-
-        scanf("%d", &n);
-
+	lfscanf("donnez la valeur de lf (en m): ", &(p->lf));
+	printf("choisissez la section de poteau:\n1. Cerculaire\n2. Rectangulaire\n");
+        dscanf("", &n);
         if (n == 2)
         {
-            scanf("La valeur de a (en m): %lf", &a);
-            scanf("La valeur de b (en m): %lf", &b);
+            lfscanf("La valeur de a (en m): ", &a);
+            lfscanf("La valeur de b (en m): ", &b);
             p_rect(p);
             break;
         }
         else if (n == 1)
         {
-            scanf("La valeur de d le diamètre (en m): %lf", &d);
+            lfscanf("La valeur de d le diamètre (en m): ", &d);
             p_cercl(p);
             break;
         }

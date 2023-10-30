@@ -11,11 +11,8 @@ void compute_dimens(secpoteau_t *p)
     int n = 0;
     double dmax = 0, dmin = 0;
 
-    if (p->lf)
-        scanf("Utilisez la valeur de lf calculer déja? (oui/non): %s", chek);
-    if (strcmp(chek, "oui"))
-        scanf("donnez la valeur de lf (en m): %lf", &(p->lf));
-    scanf("Valeur de λ: %lf", &lambda);
+    lfscanf("donnez la valeur de lf (en m): ", &(p->lf));
+    lfscanf("Valeur de λ: ", &lambda);
     if (lambda > 35)
     {
         dprintf(2, "Valeur de lambda est supérieur à 35");
@@ -23,7 +20,7 @@ void compute_dimens(secpoteau_t *p)
     }
     lambda = 0.708;
     Br = 1.907 * (Nu / fc); 
-    scanf("C'est quoi la section de poteau:\n1. cerculaire\n2. rectangulaire\nchoisissez 1 ou 2: %d", &n);
+    dscanf("C'est quoi la section de poteau:\n1. cerculaire\n2. rectangulaire\nchoisissez 1 ou 2: ", &n);
     printf("Solution:\n");
     if (n == 1)
     {

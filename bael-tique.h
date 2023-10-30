@@ -65,5 +65,8 @@ void arm_long(secpoteau_t *p);
 void compute_dimens(secpoteau_t *p);
 int determ_de_lf(secpoteau_t *p);
 void clr_buff(void);
+void dscanf(const char *prompt, int *value);
+void lfscanf(const char *prompt, double *value); 
+char cscanf(const char *prompt);
 
 #endif

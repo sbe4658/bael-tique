@@ -6,7 +6,8 @@ void arm_trans(secpoteau_t *p)
 
     system("clear");
     printf("Calcule de diamétre des armatures transversales\n");
-    scanf("diamétre Ølmax (en m): %lf et Ølmin (en m): %lf", &(p->dlmax), &(p->dlmin));
+    lfscanf("diamétre Ølmax (en m): ", &(p->dlmax));
+    lfscanf("diamétre Ølmin (en m): ", &(p->dlmin));
     printf("Solution:\n");
     dlmax = p->dlmax;
     printf("Øt > Ølmax/3\nØlmax/3 = %f\n", dlmax/3);
