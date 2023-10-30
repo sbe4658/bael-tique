@@ -1,6 +1,15 @@
 #ifndef BAEL
 #define BAEL
 
+/* Headers */
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <string.h>
+#include <unistd.h>
+#include <uchar.h>
+#include <math.h>
+
 /* Macros and constants */
 #define min(a, b) \
    ({ __typeof__ (a) _a = (a); \
@@ -11,19 +20,10 @@
        __typeof__ (b) _b = (b); \
      _a > _b ? _a : _b; })
 #define PI 3.14159265
-extern int Q, G, fe;
-extern int Nu, fc;
-extern double gamab, gamas, lambda, alpha, Br, d, a = 0, b = 0;
-extern __attribute__((unsused)) j;
-
-/* Headers */
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
-#include <string.h>
-#include <unistd.h>
-#include <uchar.h>
-#include <math.h>
+extern double Q, G;
+extern double Nu, fc;
+extern double gamab, gamas, lambda, alpha, Br, d, a, b;
+extern int j, fe;
 
 /**
  * struct poteau_s - informations sur le poteaux.
@@ -60,5 +60,10 @@ double calc_section(char c);
 double calc_Br(char c);
 secpoteau_t *p_cercl(secpoteau_t *p);
 secpoteau_t *p_rect(secpoteau_t *p);
+void arm_trans(secpoteau_t *p);
+void arm_long(secpoteau_t *p);
+void compute_dimens(secpoteau_t *p);
+int determ_de_lf(secpoteau_t *p);
+void clr_buff(void);
 
 #endif

@@ -2,55 +2,78 @@
 void arm_long(secpoteau_t *p)
 {
     int n = 0, i = 0;
-    char *chek;
+    char chek = '0';
 
     while (1)
     {
+        clr_buff();
         printf("Avez-vous la valeur de Nu? (oui/non)\n");
-        scanf("%s", chek);
-        if (strcmp(chek, "non"))
-            scanf("donnez la valeur de Nu (en MN): %f", Nu);
+        scanf(" %c", &chek);
+        if (chek == 'o')
+        {
+            scanf("donnez la valeur de Nu (en MN): %lf", &Nu);
+        }
+        else if (chek == 'n')
+        {
+            scanf("Donnez la valeur de G: %lf Q: %lf (en MN)", &G, &Q);
+            Nu = (1.35 * G) + (1.5 * Q);
+        }
         else
-        {
-            scanf("Donnez la valeur de G: %f Q: %f (en MN): ", G, Q);
-            Nu = (1.35 * G) + (1.5 * Q); 
-        }
+            dprintf(2, "repondez par o (oui) ou n (non)\n");
+
+        printf("%c\n", chek);
         printf("Veulliez-vous changer la valeur de \u03b3b et \u03b3s? (oui/non)\n");
-        scanf("%s", chek);
-        if (strcmp(chek, "non"))
+        scanf(" %c", &chek);
+
+        printf("%c", chek);
+        if (chek == 'o')
         {
-            scanf("donnez la valeur de \u03b3b: ", gamab);
+            scanf("donnez la valeur de \u03b3b: %lf et \u03b3s: %lf", &gamab, &gamas);
         }
-        printf("La mjeures ou la plus de la motié des charges est appliquée:\n1. apès 90 jours\n2. avant 90 jours\n3. à un age avant 28 jours");
-        scanf("%d", n);
-        if  (n == 1)
+
+        printf("La mjeures ou la plus de la moitié des charges est appliquée:\n1. après 90 jours\n2. avant 90 jours\n3. à un âge avant 28 jours\n");
+        scanf("%d", &n);
+
+        if (n == 1)
             j = 90;
         else if (n == 2)
             j = 89;
         else if (n == 3)
         {
-            scanf("Combien de jours: %d", j);
+            scanf("Combien de jours: %d", &j);
         }
-        printf("fc%d", (28 ? j >= 28 : j));
-        scanf("%f", fc);
-        scanf("f\u2091 (en MPa): %f", fe);
+
+        printf("fc%d: ", (j >= 28 ? 28 : j));
+        scanf("%lf", &fc);
+
+        printf("f\u2091 (en MPa): ");
+        scanf("%d", &fe);
+
+        printf("What's wrong dawng: %lf\n", p->lf);
+
         if (p->lf)
-            scanf("Utilisez la valeur de lf calculer déja? (oui/non): %s", chek);
-        if (strcmp(chek, "oui"))
-            scanf("donnez la valeur de lf (en m): %f", p->lf);
+        {
+            scanf("Utilisez la valeur de lf calculée déjà? o/n: %c", &chek);
+
+            if (chek == 'o')
+                scanf("donnez la valeur de lf (en m): %lf", &(p->lf));
+        }
+
         if (n == 0 && i >= 0)
             printf("choisissez la section de poteau:\n1. Cerculaire\n2. Rectangulaire\n");
-        scanf("%d", n);
+
+        scanf("%d", &n);
+
         if (n == 2)
         {
-            scanf("La valeur de a (en m): ", a);
-            scanf("La valeur de b (en m): ", b);
+            scanf("La valeur de a (en m): %lf", &a);
+            scanf("La valeur de b (en m): %lf", &b);
             p_rect(p);
             break;
         }
         else if (n == 1)
         {
-            scanf("La valeur de d le diamiètre (en m): ", d);
+            scanf("La valeur de d le diamètre (en m): %lf", &d);
             p_cercl(p);
             break;
         }
@@ -58,9 +81,9 @@ void arm_long(secpoteau_t *p)
             return;
         else
         {
+            system("clear");
             dprintf(2, "Entrez une valeur entre 1 et 2 (-1: pour retournez)\n");
             n = 0;
-            cls();
         }
     }
     p->alpha = alpha;
@@ -69,4 +92,15 @@ void arm_long(secpoteau_t *p)
     alpha = 0;
     lambda = 0;
     j = 0;
+}
+/**
+ * clr_buff - clears the stdin
+ * 
+ * Return: Nothing.
+*/
+void clr_buff(void)
+{
+    int c;
+
+    while( (c = fgetc(stdin)) != EOF && c != '\n' );
 }

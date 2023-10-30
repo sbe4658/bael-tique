@@ -6,17 +6,15 @@
 */
 secpoteau_t *p_cercl(secpoteau_t *p)
 {
-    secpoteau_t p;
-
     printf("Calcul de λ:\n");
-    lambda = 4 * (p->lf / d);
-    printf("λ = 4 x lf/D\nλ = 4 x %.4f/%d\n", p->lf, d);
+    lambda = 4 * ((p->lf) / d);
+    printf("λ = 4 x lf/D\nλ = 4 x %.4f/%.0f\n", p->lf, d);
     printf("λ = %.4f\n", lambda);
     p->lambda = lambda;
     alpha = calc_alpha();
     Br = calc_Br('c');
     calc_section('c');
-    return (&p);
+    return (p);
 }
 /**
  * p_rect - handles "poteaux cerculaire"
@@ -27,14 +25,14 @@ secpoteau_t *p_rect(secpoteau_t *p)
 {
     printf("Solution:\n");
     printf("Calcul de λ:\n");
-    lambda = 2 * sqrt(3) * (p->lf / a);
-    printf("λ = 2√3 x lf/D\nλ = 2√3 x %.4f/%d\n", p->lf, a);
+    lambda = 2 * sqrt(3) * ((p->lf) / a);
+    printf("λ = 2√3 x lf/D\nλ = 2√3 x %.4f/%.2f\n", p->lf, a);
     printf("λ = %.4f\n", lambda);
     p->lambda = lambda;
     alpha = calc_alpha();
     Br = calc_Br('r');
     calc_section('r');
-    return (&p);
+    return (p);
 }
 double calc_Br(char c)
 {
@@ -64,7 +62,7 @@ double calc_section(char c)
     printf("Calcul de Ath:\n");
     printf("Ath = ((Nu/\u03b1) - (Br x fc%d/0.9\u03b3b))\u03b3s/fe\n", (28 ? j >= 28 : j));
     Ath = ((Nu / alpha) - (Br * fc) / (0.9 * gamab)) * (gamas / fe);
-    printf("Ath = ((%.4f/%.4f) - (%.4f x %d/0.9 x 1.5))1.15/%d\n", Nu, alpha, Br, fc, fe);
+    printf("Ath = ((%.4f/%.4f) - (%.4f x %.4f/0.9 x 1.5))1.15/%d\n", Nu, alpha, Br, fc, fe);
     printf("Ath = %.4f\n", Ath);
     if (c = 'c')
     {
