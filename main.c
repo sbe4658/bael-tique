@@ -22,8 +22,7 @@ int main(void)
     {
         printf("\033[33mDe quoi avez-vous besoin pour calculer:\033[0m\n1. Section d'asier pour les armatures longitidinales pour poteau\n");
         printf("2. La valeur de lf\n3. Détemination des dimensions de sections\n");
-        printf("4. diamétre et espacement d'armatures transversales\n5. Section d'asier pour les armatures longitidinales pour semelle\n");
-        dscanf("", &n);
+        dscanf("4. diamétre et espacement d'armatures transversales\n5. Section d'asier pour les armatures longitidinales pour semelle\n", &n);
         if (n == 1)
             arm_long(&p);
         else if (n == 2)
