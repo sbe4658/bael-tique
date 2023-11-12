@@ -1,7 +1,7 @@
 #include "bael-tique.h"
 
 /* Needed */
-double Q = 0, G = 0, Nu = 0, fc = 0;
+double Q = 0, G = 0, Nu = 0, fc = 0, Nser = 0;
 double gamab = 1.5, gamas = 1.15, lambda = 0, alpha = 0, Br = 0, d = 0, a = 0, b = 0; /* A l'etats normaux */
 int j = 0, fe = 0;
 

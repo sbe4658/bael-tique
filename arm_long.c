@@ -6,14 +6,14 @@ void arm_long(secpoteau_t *p)
 
     while (1)
     {
-        clr_buff();
+        system("clear");
         printf("Avez-vous la valeur de Nu? (oui/non)\n");
         fgets(chek, 1024, stdin);
         if (strncmp(chek, "non", 3))
         {
             lfscanf("donnez la valeur de Nu (en MN): ", &Nu);
         }
-	else if (strncmp(chek, "oui", 3))
+        else if (strncmp(chek, "oui", 3))
         {
             lfscanf("Donnez la valeur de G (en MN): ", &Q);
             lfscanf("Donnez la valeur de Q (en MN): ", &Q);
@@ -45,12 +45,10 @@ void arm_long(secpoteau_t *p)
         printf("fc%d: ", (j >= 28 ? 28 : j));
         lfscanf("", &fc);
 
-        printf("f\u2091 (en MPa): ");
-        dscanf("", &fe);
-
-	lfscanf("donnez la valeur de lf (en m): ", &(p->lf));
-	printf("choisissez la section de poteau:\n1. Cerculaire\n2. Rectangulaire\n");
-        dscanf("", &n);
+        dscanf("f\u2091 (en MPa): ", &fe);
+        
+        lfscanf("donnez la valeur de lf (en m): ", &(p->lf));
+        dscanf("choisissez la section de poteau:\n1. Cerculaire\n2. Rectangulaire\n", &n);
         if (n == 2)
         {
             lfscanf("La valeur de a (en m): ", &a);
@@ -79,15 +77,4 @@ void arm_long(secpoteau_t *p)
     alpha = 0;
     lambda = 0;
     j = 0;
-}
-/**
- * clr_buff - clears the stdin
- * 
- * Return: Nothing.
-*/
-void clr_buff(void)
-{
-    int c;
-
-    while( (c = fgetc(stdin)) != EOF && c != '\n' );
 }

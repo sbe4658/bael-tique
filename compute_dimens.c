@@ -20,7 +20,7 @@ void compute_dimens(secpoteau_t *p)
     }
     lambda = 0.708;
     Br = 1.907 * (Nu / fc); 
-    dscanf("C'est quoi la section de poteau:\n1. cerculaire\n2. rectangulaire\nchoisissez 1 ou 2: ", &n);
+    dscanf("Quelle est la section de poteau:\n1. cerculaire\n2. rectangulaire\nchoisissez 1 ou 2: ", &n);
     printf("Solution:\n");
     if (n == 1)
     {

@@ -8,6 +8,7 @@
  */
 void lfscanf(const char *prompt, double *value) {
     char input[100];
+
     while (1)
     {
         printf("%s", prompt);
@@ -28,7 +29,8 @@ void lfscanf(const char *prompt, double *value) {
  */
 void dscanf(const char *prompt, int *value) 
 {
-    char input[100]; // Adjust buffer size as needed
+    char input[100];
+
     while (1)
     {
         printf("%s", prompt);
@@ -49,7 +51,7 @@ void dscanf(const char *prompt, int *value)
  */
 char cscanf(const char *prompt)
 {
-    char input[100]; // Adjust the buffer size as needed
+    char input[100];
     char value;
 
     while (1) {

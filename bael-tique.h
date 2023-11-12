@@ -21,7 +21,7 @@
      _a > _b ? _a : _b; })
 #define PI 3.14159265
 extern double Q, G;
-extern double Nu, fc;
+extern double Nu, fc, Nser;
 extern double gamab, gamas, lambda, alpha, Br, d, a, b;
 extern int j, fe;
 
@@ -68,5 +68,7 @@ void clr_buff(void);
 void dscanf(const char *prompt, int *value);
 void lfscanf(const char *prompt, double *value); 
 char cscanf(const char *prompt);
+double div_par_5(double n);
+double natural(double n);
 
 #endif
